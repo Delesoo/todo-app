@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Josefin+Sans:wght@400;700&family=Plus+Jakarta+Sans:wght@500;700&family=Red+Hat+Text:wght@700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    max-width: 100wh;
+    max-height: 100vh;
+    background-color: #FAFAFA;
+    background-image: url("./images/bg-desktop-light.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+}
+.container{
+    position: relative;
+}
+h1{
+    position: absolute;
+    left: 0;
+    top: 70px;
+    text-align: center;
+    color: #FFFFFF;
+    letter-spacing: 10px;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.todo-item{
+    display: flex;
+    align-items: flex-end;
+    font-weight: 400;
+    margin-top: 10px;
+    gap: 1.0rem;
+}
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.todo-item.completed span {
+    color: #D1D2DA;
+    text-decoration: line-through; 
+}
+.input-container{
+    margin-top: 150px;
+}
+.todo-field{
+    margin-top: 20px;
+    background-color: #FAFAFA;
+    box-shadow: 2px 2px 20px 2px #0000003b;
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 540px;
+}
+#text-input{
+    background-color: #FAFAFA;
+    box-shadow: 2px 2px 20px 2px #0000003b;
+    width: 386px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+}
+.buttons{
+    display: flex;
+    align-items: flex-end;
+    gap: 1.0rem;
+    margin-top: 20px;
+
+}
+.buttons p{
+    font-size: 14px;
+    color: #9495A5;
+}
+button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #9495A5;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 20px;
+}
+.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+.checkbox-round:checked {
+    background: linear-gradient(#55DDFF, #C058F3);  
+}
+.dark-mode  {
+    background-color: #333; 
+    color: #C8CBE7;
+    background-image: url("./images/bg-desktop-dark.jpg");
+}
+.dark-mode .todo-field{
+    background-color: #25273D;
+}
+.dark-mode .checkbox-round{
+    background-color: #25273D;
+}
+.dark-mode #text-input{
+    background-color: #25273D;
+    color: #C8CBE7;
+}
+
+#dark-mode-toggle{
+    position: absolute;
+    top: 80px;
+    right: 0;
+    cursor: pointer;
+}
+.big-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
