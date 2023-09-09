@@ -132,3 +132,42 @@ button{
     align-items: center;
     flex-direction: column;
 }
+button:hover{
+    color: #000000;
+}
+.dark-mode button:hover{
+    color: #ffffff;
+}
+.active{
+    color: #3A7CFD;
+}
+@media only screen and (max-width: 667px) {
+
+#text-input{
+    max-width: 300px;
+}
+.todo-field{
+    max-width: 300px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    margin-top: 0;
+}
+.separate-buttons{
+    background-color: #FAFAFA;
+    box-shadow: 2px 2px 20px 2px #0000003b;
+    border-radius: 6px;
+    margin-top: 20px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+.dark-mode .separate-buttons{
+    background-color: #25273D;
+}
+}

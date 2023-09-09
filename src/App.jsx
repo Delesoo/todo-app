@@ -1,7 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './style.css'
 
 function App() {
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const [isChecked, setIsChecked] = useState(false); 
   const [text, setText] = useState('');
   const [todos, setTodos] = useState([
@@ -12,6 +27,14 @@ function App() {
     {id: 5, text: 'Pick up groceries', completed: false},
     {id: 6, text: 'Complete Todo App on Frontend Mentor', completed: false},
   ])
+
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const handleFilterClick = (filter) => {
+    setFilter(filter);
+    setActiveFilter(filter);
+  };
+
   const [darkMode, setDarkMode] = useState(false);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -93,7 +116,7 @@ return (
           onKeyDown={(e) => handleKeyDown(e)} 
         />
       </div>
-      <div className="todo-field">
+      <div className={'todo-field'}>
         
       {filteredTodos.map((todo) => (
     <div key={todo.id} className={`todo-item ${todo.completed ? 'completed' : ''}`}>
@@ -109,15 +132,33 @@ return (
       <span>{todo.text}</span>
     </div>
   ))}
+  {windowWidth > 667 && (
   <div className="buttons">
     <p>{countActiveTodos()} item(s) left</p>
-      <button onClick={() => setFilter ('all')}>All</button>
-        <button onClick={() => setFilter ('active')}>Active</button>
-        <button onClick={() => setFilter ('completed')}>Completed</button>
+      <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => handleFilterClick('all')}>All</button>
+        <button className={activeFilter === 'active' ? 'active' : ''} onClick={() => handleFilterClick('active')}>Active</button>
+        <button className={activeFilter === 'completed' ? 'active' : ''} onClick={() => handleFilterClick('completed')}>Completed</button>
         <button onClick={clearCompletedTodos}>Clear Completed</button>
   </div>
+  )}
 
-      </div>
+  {windowWidth <= 667 && (
+    <div className="buttons">
+      <p>{countActiveTodos()} item(s) left</p>
+      <button onClick={clearCompletedTodos}>Clear Completed</button>
+    </div>
+    
+  )}
+  </div>
+
+      {windowWidth <= 667 &&(
+    <div className="separate-buttons">
+       <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => handleFilterClick('all')}>All</button>
+        <button className={activeFilter === 'active' ? 'active' : ''} onClick={() => handleFilterClick('active')}>Active</button>
+        <button className={activeFilter === 'completed' ? 'active' : ''} onClick={() => handleFilterClick('completed')}>Completed</button>
+    </div>
+    
+  )}
     </div>
 
   </div>
